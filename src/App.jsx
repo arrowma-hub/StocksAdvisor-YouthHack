@@ -528,7 +528,7 @@ function NewsPage() {
   useEffect(()=>{
     (async()=>{
       try {
-        const res = await fetch("https://api.anthropic.com/v1/messages",{
+        const res = await fetch("/api/claude",{
           method:"POST",headers:{"Content-Type":"application/json"},
           body:JSON.stringify({
             model:"claude-sonnet-4-6",max_tokens:1000,
@@ -603,7 +603,7 @@ function IndicatorsPage() {
     setLoading(true); setResult(null); setErr(null);
     try {
       const sym = ticker.trim().toUpperCase();
-      const res = await fetch("https://api.anthropic.com/v1/messages",{
+      const res = await fetch("/api/claude",{
         method:"POST",headers:{"Content-Type":"application/json"},
         body:JSON.stringify({
           model:"claude-sonnet-4-6",max_tokens:1000,
@@ -826,7 +826,7 @@ function AIAdvisorPage() {
     const newMsgs = [...messages,{role:"user",content:q}];
     setMessages(newMsgs); setInput(""); setLoading(true);
     try {
-      const res = await fetch("https://api.anthropic.com/v1/messages",{
+      const res = await fetch("/api/claude",{
         method:"POST",headers:{"Content-Type":"application/json"},
         body:JSON.stringify({
           model:"claude-sonnet-4-6",max_tokens:1000,
